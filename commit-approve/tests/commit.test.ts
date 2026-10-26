@@ -131,6 +131,24 @@ test('an -m of another command is not a commit message', async ($, on) => {
   expect(t.ran).toEqual([`git commit -m 'chore: x' && mkdir -m "755" d`])
 })
 
+test('git commit written inside a heredoc body is data, not a commit', async ($, on) => {
+  const t = run(['Approve'])
+  on('tool.call', t.hook)
+  const cmd = `cat > README.md <<'EOF'\n# Usage\n\ngit commit -m "feat: example"\ngit commit -F msg.txt\nEOF`
+  await bash($, cmd)
+  expect(t.asked).toEqual([])
+  expect(t.ran).toEqual([cmd])
+})
+
+test('a real commit after a heredoc is still approved', async ($, on) => {
+  const t = run(['Approve'])
+  on('tool.call', t.hook)
+  await bash($, `cat > a.txt <<'EOF'\ngit commit -m "fix: not real"\nEOF\ngit commit -m "docs: real one"`)
+  expect(t.asked.length).toBe(1)
+  expect(t.asked[0]).toContain('docs: real one')
+  expect(t.ran).toEqual([`cat > a.txt <<'EOF'\ngit commit -m "fix: not real"\nEOF\ngit commit -m 'docs: real one'`])
+})
+
 test('a typed conventional message replaces the proposal', async ($, on) => {
   const t = run(['docs: add the database design', 'Approve'])
   on('tool.call', t.hook)

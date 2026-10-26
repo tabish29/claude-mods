@@ -38,15 +38,32 @@ const findMessages = (cmd: string): Span[] => {
   return spans.sort((a, b) => a.start - b.start)
 }
 
+// The bodies of heredocs (cat > file <<'EOF' ... EOF). Their lines are data, not commands, so a `git commit`
+// written in one (a README example, a script being created) is never a commit. A heredoc that is the
+// value of an -m (-m "$(cat <<'EOF' ...)") is a message span and is handled there, not here.
+const findHeredocs = (cmd: string, spans: Span[]): [number, number][] => {
+  const bodies: [number, number][] = []
+  const re = /<<-?[ \t]*(['"]?)(\w+)\1[^\n]*\n([\s\S]*?)(?:\n[ \t]*\2[ \t]*(?=\n|$)|$)/g
+  for (let m = re.exec(cmd); m; m = re.exec(cmd)) {
+    if (spans.some(s => m!.index >= s.start && m!.index < s.end)) continue
+    const start = m.index + m[0].indexOf('\n') + 1
+    bodies.push([start, m.index + m[0].length])
+    re.lastIndex = m.index + m[0].length
+  }
+  return bodies
+}
+
 // Each git commit of the command with the messages that belong to it. A commit runs up to the next
 // && || ; | or newline that is not inside a message, so an -m of another command (mkdir -m "755")
 // is never taken for a commit message and chained commits keep their own messages.
 const findCommits = (cmd: string, spans: Span[]): Commit[] => {
   const commits: Commit[] = []
+  const heredocs = findHeredocs(cmd, spans)
   const re = new RegExp(GIT_COMMIT.source, 'g')
   for (let m = re.exec(cmd); m; m = re.exec(cmd)) {
     const start = m.index + m[0].length - m[1].length
     if (spans.some(s => start >= s.start && start < s.end)) continue
+    if (heredocs.some(([from, to]) => start >= from && start < to)) continue
     let end = cmd.length
     for (let i = start; i < cmd.length; i++) {
       const s = spans.find(x => i >= x.start && i < x.end)
