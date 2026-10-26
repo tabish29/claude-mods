@@ -1,0 +1,9 @@
+{
+  "name": "claude-mods",
+  "owner": { "name": "tabish" },
+  "plugins": [
+    { "name": "commit-approve", "source": "./commit-approve", "description": "Suggests a commit message and asks for approval before git commit runs" },
+    { "name": "prompt-coach", "source": "./prompt-coach", "description": "Asks targeted questions when a prompt is too vague" },
+    { "name": "mod-manager", "source": "./mod-manager", "description": "Lists the mods, shows which are active in this session, and turns them on or off" }
+  ]
+}

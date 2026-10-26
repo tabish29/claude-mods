@@ -1,0 +1,6 @@
+{
+  "name": "mod-manager",
+  "version": "0.1.0",
+  "description": "Lists mods and plugins, shows which are active in this session, and turns them on or off",
+  "types": "./types/index.d.ts"
+}

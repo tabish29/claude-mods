@@ -1,0 +1,1 @@
+{ "name": "prompt-coach", "version": "0.1.0", "description": "Judges every prompt; if it is too vague, asks multiple-choice questions and rewrites it into an optimized prompt before running it" }

@@ -1,0 +1,1 @@
+{ "name": "commit-approve", "version": "0.1.1", "description": "Suggests a one-sentence Conventional Commits message after each task and asks you to approve or change it before git commit runs; refuses commits that would skip the approval" }
