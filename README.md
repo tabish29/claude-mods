@@ -12,7 +12,7 @@ A collection of mods (plugins) for [Claude Code](https://claude.com/claude-code)
 
 ## Installation
 
-Inside Claude Code, replace `tabish29/claude-mods` with the path of this repository on GitHub:
+Inside Claude Code, add this repository as a marketplace:
 
 ```
 /plugin marketplace add tabish29/claude-mods
