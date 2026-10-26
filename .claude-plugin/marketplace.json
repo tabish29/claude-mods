@@ -1,6 +1,7 @@
 {
   "name": "claude-mods",
-  "owner": { "name": "tabish" },
+  "description": "Claude Code mods by tabish29: commit-approve, prompt-coach and mod-manager.",
+  "owner": { "name": "tabish29" },
   "plugins": [
     { "name": "commit-approve", "source": "./commit-approve", "description": "Suggests a commit message and asks for approval before git commit runs" },
     { "name": "prompt-coach", "source": "./prompt-coach", "description": "Asks targeted questions when a prompt is too vague" },

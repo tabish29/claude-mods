@@ -12,10 +12,10 @@ A collection of mods (plugins) for [Claude Code](https://claude.com/claude-code)
 
 ## Installation
 
-Inside Claude Code, replace `USER/REPO` with the path of this repository on GitHub:
+Inside Claude Code, replace `tabish29/claude-mods` with the path of this repository on GitHub:
 
 ```
-/plugin marketplace add USER/REPO
+/plugin marketplace add tabish29/claude-mods
 ```
 
 Then install the mods you want (one or all):
@@ -37,7 +37,7 @@ You can also run `/plugin` to open the interactive menu, pick the `claude-mods` 
 ### Installing from a local clone
 
 ```
-git clone https://github.com/USER/REPO.git
+git clone https://github.com/tabish29/claude-mods.git
 ```
 
 ```
@@ -90,3 +90,7 @@ Each mod folder contains `.claude-plugin/plugin.json` and a `hooks/register.*` m
 ## Customizing
 
 The `commit-approve` rules (English message, one line, no co-author trailer) are opinionated: edit `commit-approve/hooks/register.ts` if you want different rules.
+
+## License
+
+[MIT](LICENSE)
