@@ -1,10 +1,11 @@
 {
   "name": "claude-mods",
-  "description": "Claude Code mods by tabish29: commit-approve, prompt-coach and mod-manager.",
+  "description": "Claude Code mods by tabish29: commit-approve, prompt-coach, mod-manager and cache-watch.",
   "owner": { "name": "tabish29" },
   "plugins": [
     { "name": "commit-approve", "source": "./commit-approve", "description": "Suggests a commit message and asks for approval before git commit runs" },
     { "name": "prompt-coach", "source": "./prompt-coach", "description": "Asks targeted questions when a prompt is too vague" },
-    { "name": "mod-manager", "source": "./mod-manager", "description": "Lists the mods, shows which are active in this session, and turns them on or off" }
+    { "name": "mod-manager", "source": "./mod-manager", "description": "Lists the mods, shows which are active in this session, and turns them on or off" },
+    { "name": "cache-watch", "source": "./cache-watch", "description": "Shows the prompt cache state, time left before it expires, and the cost of a prompt sent with a cold cache" }
   ]
 }

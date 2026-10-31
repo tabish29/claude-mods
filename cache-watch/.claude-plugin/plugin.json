@@ -1,0 +1,21 @@
+{
+  "name": "cache-watch",
+  "version": "0.1.0",
+  "description": "Shows the prompt cache state above the prompt: warm or cold, time left before it expires, and the estimated cost of a prompt sent with a cold cache",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "cacheTtl": {
+      "type": "string",
+      "title": "Cache TTL",
+      "description": "How long the prompt cache lives after each request: 5m (default) or 1h (subscriptions with the extended cache)",
+      "default": "5m",
+      "options": ["5m", "1h"]
+    },
+    "inputPricePerMTok": {
+      "type": "number",
+      "title": "Input price (USD per million tokens)",
+      "description": "Base input price of the model. 0 = guess from the model name (opus 5, sonnet 3, haiku 1)",
+      "default": 0
+    }
+  }
+}

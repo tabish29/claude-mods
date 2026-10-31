@@ -9,6 +9,7 @@ A collection of mods (plugins) for [Claude Code](https://claude.com/claude-code)
 | `commit-approve` | After each task, proposes a one-line Conventional Commits message (in English) and asks you to approve or change it before `git commit` runs. Refuses commits that would skip the approval. |
 | `prompt-coach` | Judges every prompt: if it is too vague, asks targeted multiple-choice questions, rewrites it into an optimized prompt, then carries out the task. Toggle with `/prompt-coach on\|off\|status`. |
 | `mod-manager` | Adds a `/mods` command: lists mods and plugins, shows which are active in the session, and turns them on or off. |
+| `cache-watch` | Shows a band above the prompt with the prompt cache state (warm/cold), a live countdown to its expiry, and the estimated cost of a prompt sent with a cold cache. Toggle with `/cache-watch`. |
 
 ## Installation
 
@@ -24,6 +25,7 @@ Then install the mods you want (one or all):
 /plugin install commit-approve@claude-mods
 /plugin install prompt-coach@claude-mods
 /plugin install mod-manager@claude-mods
+/plugin install cache-watch@claude-mods
 ```
 
 Finally reload plugins without restarting:
@@ -51,6 +53,7 @@ then run the same `/plugin install ...@claude-mods` commands.
 - **commit-approve**: works automatically. When Claude finishes a task that changed files in a git repository, it shows a dialog with the proposed commit message. You can approve it, change it, or deny the commit.
 - **prompt-coach**: works automatically. If your prompt is clear you see nothing; if it is vague you get targeted questions and an "Optimized prompt" before the task starts.
 - **mod-manager**: type `/mods` to open the panel and turn mods on or off.
+- **cache-watch**: works automatically after the first response. Set the cache TTL (`5m` or `1h`) and, optionally, the model's input price in the plugin options; `/cache-watch` shows or hides the band. Costs are estimates.
 
 ## Updating and removing
 
