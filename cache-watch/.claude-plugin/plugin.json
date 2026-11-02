@@ -1,7 +1,7 @@
 {
   "name": "cache-watch",
   "version": "0.1.0",
-  "description": "Shows the prompt cache state above the prompt: warm or cold, time left before it expires, and the estimated cost of a prompt sent with a cold cache",
+  "description": "Shows the prompt cache state above the prompt: warm or cold, time left before it expires, the real cost of the last call, and the cost of a prompt sent with a cold cache. Cache lifetime and price are worked out from real usage, with the options below as fallback",
   "types": "./types/index.d.ts",
   "userConfig": {
     "cacheTtl": {
