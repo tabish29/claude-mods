@@ -1,0 +1,6 @@
+{
+  "name": "usage-watch",
+  "version": "0.1.0",
+  "description": "Shows the 5-hour session and weekly usage limits above the prompt, with percent used and time until each resets",
+  "types": "./types/index.d.ts"
+}
